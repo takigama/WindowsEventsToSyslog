@@ -21,6 +21,11 @@ namespace SysLogForwarder
             localLog = localLogName;
         }
 
+        public void setPrefix(String tp)
+        {
+            prefix = tp;
+        }
+
         public void setFacility(int fac)
         {
             syslogFacilities sl = new syslogFacilities();
@@ -86,7 +91,7 @@ namespace SysLogForwarder
             String myval;
             myval = "mapping;" + sysFac.ToString() + ";" + doTrim.ToString() + ";" + localLog + ";";
             if (negFilter) myval += "!";
-            myval += regexfilter;
+            myval += regexfilter + ";" + prefix;
             Trace.Write("sent: " + myval + "\r\n");
 
             return myval;
@@ -98,13 +103,14 @@ namespace SysLogForwarder
             Trace.Write("got:" + val + "\r\n");
             String[] sep = { ";" }; // what a stupid way to split strings
             String[] av = val.Split(sep, StringSplitOptions.None);
-            if (av.Length != 5) return false;
+            if (av.Length != 6) return false;
             if (av[0] != "mapping") return false;
 
             sysFac = Int32.Parse(av[1]);
             doTrim = Convert.ToBoolean(av[2]);
             localLog = av[3];
             setFilter(av[4]);
+            setPrefix(av[5]);
 
             return true;
         }
@@ -115,6 +121,7 @@ namespace SysLogForwarder
         private int sysFac;
         private bool doTrim;
         private String localLog;
+        private String prefix;
 
 
     }

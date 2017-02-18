@@ -18,19 +18,19 @@ namespace SysLogForwarder.Tests
 
             // a blank map
             String ik = sm.toString();
-            Assert.AreEqual(ik, "mapping;0;False;;");
+            Assert.AreEqual(ik, "mapping;0;False;;;");
 
             // send a bad map
             bool res = sm.fromString("qwer;qwer;qwer;qwer;qwer");
             Assert.AreEqual(false, res);
 
             // send a good map
-            bool res2 = sm.fromString("mapping;0;true;locallog;.*");
+            bool res2 = sm.fromString("mapping;0;true;locallog;.*;");
             Assert.AreEqual(true, res2);
 
             // assert returned value
             String v = sm.toString();
-            Assert.AreEqual(v, "mapping;0;True;locallog;.*");
+            Assert.AreEqual(v, "mapping;0;True;locallog;.*;");
 
             // test filter set
             sm.setFilter("!^a.*");
