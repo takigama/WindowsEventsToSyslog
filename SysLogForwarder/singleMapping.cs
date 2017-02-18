@@ -49,6 +49,7 @@ namespace SysLogForwarder
 
         // visual studio's integration plugin with github
         // is beyond crap!
+        // maybe not.
 
     }
 }
