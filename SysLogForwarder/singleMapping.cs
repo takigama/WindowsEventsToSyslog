@@ -47,9 +47,5 @@ namespace SysLogForwarder
         private bool negFilter;
         private syslogFacilities sysFac;
 
-        // visual studio's integration plugin with github
-        // is beyond crap!
-        // maybe not.
-
     }
 }
