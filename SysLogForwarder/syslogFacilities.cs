@@ -2,7 +2,7 @@
 
 namespace SysLogForwarder
 {
-    class syslogFacilities
+    public class syslogFacilities
     {
         public syslogFacilities()
         {
@@ -46,7 +46,7 @@ namespace SysLogForwarder
             {
                 return facmap[num];
             } else {
-                return "unknown facility";
+                return null;
             }
         }
 
@@ -58,6 +58,12 @@ namespace SysLogForwarder
             }
 
             return -1;
+        }
+
+        public bool isValid(int fac)
+        {
+            if (facmap.ContainsKey(fac)) return true;
+            else return false;
         }
 
         private Dictionary<int, string> facmap;

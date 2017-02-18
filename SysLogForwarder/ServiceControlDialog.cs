@@ -16,6 +16,51 @@ namespace SysLogForwarder
         public ServiceControlDialog()
         {
             InitializeComponent();
+
+            initFacilities();
+            initLocalLog();
+            initProtocol();
+            initRoles();
+        }
+
+        private void initRoles()
+        {
+            syslogRoleCB.Items.Add("Primary");
+            syslogRoleCB.Items.Add("Secondary");
+            syslogRoleCB.Items.Add("Disabled");
+            syslogRoleCB.SelectedIndex = 0;
+        }
+
+        private void initProtocol()
+        {
+            syslogProtocolCB.Items.Add("TCP (Prefered)");
+            syslogProtocolCB.Items.Add("UDP");
+            syslogProtocolCB.SelectedIndex = 0;
+
+        }
+
+        private void initLocalLog()
+        {
+            EventLog[] ev = EventLog.GetEventLogs();
+            foreach(EventLog e in ev)
+            {
+                localLog.Items.Add(e.LogDisplayName);
+            }
+            localLog.SelectedIndex = 0;
+        }
+
+        private void initFacilities()
+        {
+            syslogFacilities sl = new syslogFacilities();
+
+            int i = 0;
+
+            while(sl.getFacilityName(i) != null)
+            {
+                syslogFacility.Items.Add(i.ToString() + ": " + sl.getFacilityName(i));
+                i++;
+            }
+            syslogFacility.SelectedIndex = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -94,6 +139,11 @@ namespace SysLogForwarder
         }
 
         private void syslogFacility_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

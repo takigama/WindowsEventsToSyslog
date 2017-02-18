@@ -49,7 +49,7 @@
             this.syslogFacility = new System.Windows.Forms.ComboBox();
             this.mappingTrim = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.localLog = new System.Windows.Forms.ComboBox();
             this.mappingListView = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -185,7 +185,7 @@
             this.mappingBox.Controls.Add(this.syslogFacility);
             this.mappingBox.Controls.Add(this.mappingTrim);
             this.mappingBox.Controls.Add(this.label1);
-            this.mappingBox.Controls.Add(this.comboBox1);
+            this.mappingBox.Controls.Add(this.localLog);
             this.mappingBox.Controls.Add(this.mappingListView);
             this.mappingBox.Location = new System.Drawing.Point(12, 91);
             this.mappingBox.Name = "mappingBox";
@@ -295,15 +295,16 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Local Log";
             // 
-            // comboBox1
+            // localLog
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(575, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 1;
+            this.localLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.localLog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.localLog.FormattingEnabled = true;
+            this.localLog.Location = new System.Drawing.Point(575, 21);
+            this.localLog.Name = "localLog";
+            this.localLog.Size = new System.Drawing.Size(121, 24);
+            this.localLog.TabIndex = 1;
+            this.localLog.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // mappingListView
             // 
@@ -474,7 +475,7 @@
         private System.Windows.Forms.GroupBox mappingBox;
         private System.Windows.Forms.ListBox mappingListView;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox localLog;
         private System.Windows.Forms.ComboBox syslogFacility;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button mappingRemoveButton;
