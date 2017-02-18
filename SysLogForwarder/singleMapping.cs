@@ -45,7 +45,8 @@ namespace SysLogForwarder
 
         private String regexfilter;
         private bool negFilter;
-        private syslogFacilities sysFac; 
+        private syslogFacilities sysFac;
+        private int testinggit;
 
 
     }
