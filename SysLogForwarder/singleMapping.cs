@@ -46,8 +46,9 @@ namespace SysLogForwarder
         private String regexfilter;
         private bool negFilter;
         private syslogFacilities sysFac;
-        private int testinggit;
 
+        // visual studio's integration plugin with github
+        // is beyond crap!
 
     }
 }
