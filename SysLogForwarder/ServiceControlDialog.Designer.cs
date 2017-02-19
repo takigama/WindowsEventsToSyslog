@@ -234,12 +234,14 @@
             // mappingRemoveButton
             // 
             this.mappingRemoveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mappingRemoveButton.Enabled = false;
             this.mappingRemoveButton.Location = new System.Drawing.Point(621, 170);
             this.mappingRemoveButton.Name = "mappingRemoveButton";
             this.mappingRemoveButton.Size = new System.Drawing.Size(75, 23);
             this.mappingRemoveButton.TabIndex = 8;
             this.mappingRemoveButton.Text = "Remove";
             this.mappingRemoveButton.UseVisualStyleBackColor = true;
+            this.mappingRemoveButton.Click += new System.EventHandler(this.mappingRemoveButton_Click);
             // 
             // mappingAddButton
             // 
@@ -250,6 +252,7 @@
             this.mappingAddButton.TabIndex = 7;
             this.mappingAddButton.Text = "Add";
             this.mappingAddButton.UseVisualStyleBackColor = true;
+            this.mappingAddButton.Click += new System.EventHandler(this.mappingAddButton_Click);
             // 
             // label2
             // 
@@ -311,6 +314,7 @@
             this.mappingListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mappingListView.FormattingEnabled = true;
+            this.mappingListView.HorizontalScrollbar = true;
             this.mappingListView.ItemHeight = 16;
             this.mappingListView.Location = new System.Drawing.Point(6, 27);
             this.mappingListView.Name = "mappingListView";

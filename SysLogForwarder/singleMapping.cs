@@ -54,6 +54,11 @@ namespace SysLogForwarder
             Trace.Write("set hasfilter " + hasfilter.ToString() + " and " + negFilter.ToString() + "\r\n");
         }
 
+        public String getPrefix()
+        {
+            return prefix;
+        }
+
         public bool tryFilter(String logval)
         {
             if (!hasfilter) return true;
@@ -84,6 +89,52 @@ namespace SysLogForwarder
         public int getFacility()
         {
             return sysFac;
+        }
+
+        public String getFilter()
+        {
+            String retval;
+            retval = "";
+            if (negFilter) retval += "!";
+            retval += regexfilter;
+            return retval;
+        }
+
+        public String getTxtRepresentation()
+        {
+            syslogFacilities sl = new syslogFacilities();
+            String thisret = "" + localLog + " -> " + sl.getFacilityName(sysFac) + " ("+sysFac.ToString()+")";
+
+            if(doTrim)
+            {
+                thisret += " Trimmed ";
+            }
+
+            if(prefix != "")
+            {
+                thisret += " Prefix:" + prefix + " ";
+            }
+
+            if(hasfilter)
+            {
+                thisret += " Filtered (" + regexfilter + ")";
+                if (negFilter)
+                {
+                    thisret += " not contains";
+                }
+                else
+                {
+                    thisret += " contains";
+                }
+            }
+
+
+            return thisret;
+        }
+
+        public bool getTrim()
+        {
+            return doTrim;
         }
 
         public String toString()
