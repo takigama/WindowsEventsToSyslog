@@ -80,6 +80,43 @@ namespace SysLogForwarder
             return mappings.Count();
         }
 
+        // dumps out all hosts as their string variants
+        public String toString()
+        {
+            String retval = "";
+            foreach (KeyValuePair<int, singleMapping> map in mappings)
+            {
+                retval += map.Value.toString() + "\r";
+            }
+
+            Trace.WriteLine("retval is " + retval);
+            return retval;
+        }
+
+        public bool fromString(String load)
+        {
+            String[] sep = { "\r" };
+            String[] av = load.Split(sep, StringSplitOptions.None);
+
+            for (int i = 0; i < av.Length; i++)
+            {
+                singleMapping ism = new singleMapping();
+                Trace.WriteLine("line is " + av[i]);
+                if (ism.fromString(av[i]))
+                {
+                    Trace.WriteLine("added");
+                    addMapping(ism);
+                }
+                else
+                {
+                    Trace.WriteLine("not added");
+                }
+            }
+
+            return true;
+
+        }
+
 
         private Dictionary <int,singleMapping>mappings;
 

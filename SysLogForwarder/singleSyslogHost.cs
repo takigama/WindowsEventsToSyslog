@@ -22,14 +22,29 @@ namespace SysLogForwarder
             hostAddress = addr;
         }
 
+        public String getHostAddress()
+        {
+            return hostAddress;
+        }
+
         public void setProtocol(int prot)
         {
             protocol = prot;
         }
 
+        public int getProtocol()
+        {
+            return protocol;
+        }
+
         public void setRole(int sr)
         {
             role = sr;
+        }
+
+        public int getRole()
+        {
+            return role;
         }
 
         public String toString()

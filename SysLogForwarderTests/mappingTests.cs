@@ -70,6 +70,18 @@ namespace SysLogForwarder.Tests
             Assert.AreEqual(mymap.getNMaps(), 0);
             mymap.dumpMap();
 
+            mymap.addMapping(sm2);
+            mymap.addMapping(sm2);
+            mymap.addMapping(sm2);
+            mymap.addMapping(sm2);
+            mymap.addMapping(sm2);
+
+            // now test the dump
+            String du = mymap.toString();
+            mapping newMap = new mapping();
+            newMap.fromString(du);
+
+            Assert.AreEqual(du, newMap.toString());
         }
 
     }

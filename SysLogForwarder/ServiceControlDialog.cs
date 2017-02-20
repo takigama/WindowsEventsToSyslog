@@ -17,14 +17,17 @@ namespace SysLogForwarder
         {
             InitializeComponent();
 
+            // setup some default data
             mData = new mapping();
             selectedMapping = -1;
             mappingListView.SelectedIndex = -1;
 
+            // init the base drop boxes
             initFacilities();
             initLocalLog();
             initProtocol();
             initRoles();
+            mappingTrim.Checked = true;
         }
 
         private void initRoles()
@@ -171,7 +174,7 @@ namespace SysLogForwarder
                 mData.addMapping(sm);
             } else
             {
-                // we're modifying an existing mapping... frig me?
+                // we're modifying an existing mapping... what could possiblie go wrong?
                 mData.getMap(selectedMapping).setFacility(selind);
                 mData.getMap(selectedMapping).setFilter(reg);
                 mData.getMap(selectedMapping).setPrefix(pref);
